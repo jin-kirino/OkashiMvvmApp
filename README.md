@@ -1,2 +1,2 @@
-# MyOkashiMxxm_kirino
+# MyOkashiMvvm_kirino
 お菓子アプリをMVVMで組み直し
