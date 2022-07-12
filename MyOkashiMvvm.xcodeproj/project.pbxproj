@@ -27,6 +27,7 @@
 		FF47517028792554000C1A08 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FF47517228792560000C1A08 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		FF475174287AC8AF000C1A08 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		FF4751B6287DA26C000C1A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		FF47515C28791EE4000C1A08 /* MyOkashiMvvm */ = {
 			isa = PBXGroup;
 			children = (
+				FF4751B6287DA26C000C1A08 /* Info.plist */,
 				FF47516D28791EFF000C1A08 /* Model */,
 				FF47516C28791EF7000C1A08 /* ViewModel */,
 				FF47516B28791EEF000C1A08 /* View */,
@@ -310,6 +312,7 @@
 				DEVELOPMENT_TEAM = 3H6C67VURA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyOkashiMvvm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +342,7 @@
 				DEVELOPMENT_TEAM = 3H6C67VURA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyOkashiMvvm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
