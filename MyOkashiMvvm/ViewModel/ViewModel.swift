@@ -10,6 +10,14 @@ import Foundation
 // UIImageを利用するため
 import UIKit
 
+struct OkashiItem: Identifiable {
+    // 一意でなきゃだめ
+    let id = UUID()
+    let name: String
+    let link: URL
+    let image: URL
+}// OkashiItem
+
 // お菓子データ検索用クラス
 // ObservableObjectはclassのみ使用可能
 // パブリッシャー
@@ -55,27 +63,51 @@ class OkashiData: ObservableObject {
             return
         }// req_url
         print(req_url)
-        
-        // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
-        DispatchQueue.main.async {
-            // okashiLostのデータを初期化（前回検索データが保持されているため.removwAll())
-            // classのcompletionHandlerの{}内の動き、selfをつけて循環参照を回避
-            self.okashiList.removeAll()
+        do {
+            // リクエストURLからダウンロード
+            // リクエストに必要な情報を生成、引数：req_url
+            // await 処理が終わるまで待機
+            let (data , _) = try await URLSession.shared.data(from: req_url)
+            
+            // JSONDecoderのインスタンス取得
+            let decoder = JSONDecoder()
+            // 受け取ったJSONデータをパース（解析）して格納
+            let json = try decoder.decode(ResultJson.self, from: data)
+            
+            // print(json)
+            
+            // お菓子の情報が取得できているか確認
+            guard let items = json.item else {
+                return
+            }// items
+            
+            // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
+            DispatchQueue.main.async {
+                // okashiLostのデータを初期化（前回検索データが保持されているため.removwAll())
+                // classのcompletionHandlerの{}内の動き、selfをつけて循環参照を回避
+                self.okashiList.removeAll()
 
-            // 取得しているお菓子の数だけ処理
-            for item in items {
-                // お菓子の名称、掲載URL、画像URLをアンラップ
-                if let name = item.name,
-                   let link = item.url,
-                   let image = item.image {
-                    // １つのお菓子の情報をokashiに入れて構造体でまとめて管理
-                    let okashi = OkashiItem(name: name, link: link, image: image)
-                    // お菓子の配列okashiListへ追加
-                    self.okashiList.append(okashi)
-                }// name,link,image
-            }// for item in items
-            print(self.okashiList)
-        }// DispatchQueue
+                // 取得しているお菓子の数だけ処理
+                for item in items {
+                    // お菓子の名称、掲載URL、画像URLをアンラップ
+                    if let name = item.name,
+                       let link = item.url,
+                       let image = item.image {
+                        // １つのお菓子の情報をokashiに入れて構造体でまとめて管理
+                        let okashi = OkashiItem(name: name, link: link, image: image)
+                        // お菓子の配列okashiListへ追加
+                        self.okashiList.append(okashi)
+                    }// name,link,image
+                }// for item in items
+                print(self.okashiList)
+            }// DispatchQueue
+            
+        // doでエラーが出た時
+        } catch {
+            // エラー処理
+            print("エラーが出ました")
+        }// catch
+       
     }// seachOkashi
 }// OkashiData
 
