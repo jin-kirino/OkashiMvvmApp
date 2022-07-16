@@ -11,7 +11,7 @@ import SwiftUI
 struct MyOkashiMvvmApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OkashiView()
         }
     }
 }
