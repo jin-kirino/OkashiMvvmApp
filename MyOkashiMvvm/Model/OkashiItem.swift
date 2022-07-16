@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
+//構造体OkashiItemを配列としてまとめる
+// お菓子のリスト（Identifiableプロトコル）
 struct OkashiItem: Identifiable {
     // 一意でなきゃだめ
     let id = UUID()
@@ -14,6 +17,3 @@ struct OkashiItem: Identifiable {
     let link: URL
     let image: URL
 }// OkashiItem
-
-
-
