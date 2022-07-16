@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct OkashiView: View {
     
     // OkashiDataを参照する状態変数
     @StateObject var okashiDataList = OkashiData()
@@ -80,8 +80,8 @@ struct ContentView: View {
     } // bodyここまで
 } // ContentViewここまで
 
-struct ContentView_Previews: PreviewProvider {
+struct OkashiViewView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        OkashiView()
     }
 }
