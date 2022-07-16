@@ -6,10 +6,14 @@
 //
 
 import Foundation
-import UIKit
 
-// Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
-
+struct OkashiItem: Identifiable {
+    // 一意でなきゃだめ
+    let id = UUID()
+    let name: String
+    let link: URL
+    let image: URL
+}// OkashiItem
 
 
 

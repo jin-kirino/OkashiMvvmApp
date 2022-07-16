@@ -10,14 +10,6 @@ import Foundation
 // UIImageを利用するため
 import UIKit
 
-struct OkashiItem: Identifiable {
-    // 一意でなきゃだめ
-    let id = UUID()
-    let name: String
-    let link: URL
-    let image: URL
-}// OkashiItem
-
 // お菓子データ検索用クラス
 // ObservableObjectはclassのみ使用可能
 // パブリッシャー
