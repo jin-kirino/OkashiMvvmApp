@@ -84,6 +84,7 @@ class OkashiModel {
                             let okashi = OkashiItem(name: name, link: link, image: image)
                             // okashiList配列に追加
 //                            self.okashiList.append(okashi)
+                            
                         }// let image
                     }// for in
                 }// if let
