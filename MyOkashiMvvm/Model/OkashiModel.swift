@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class OkashiModel {
-
     // JSONのデータ構造
     struct ResultJson: Codable {
         // JSONのitem内のデータ構造、たくさんあるうちの３つを選出
@@ -28,9 +27,10 @@ class OkashiModel {
     }// ResultJSON
     
     // webAPI検索用のメソッド　引数：検索したいキーワード(inputText)
-    // asyncでsearchOkashiを非同期で実行したい
+    // async(エィシンク)でsearchOkashiを非同期で実行したい
     // Web API検索用メソッド　第一引数：keyword 検索したいワード
-    func searchOkashi(keyword: String) async {
+    func searchOkashi(keyword: String) async -> [OkashiItem] {
+        var okashiList: [OkashiItem] = []
         // デバッグエリアに出力
         print(keyword)
         
@@ -38,39 +38,43 @@ class OkashiModel {
         guard let keyword_encode = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         else {
             // アンラップに失敗したら
-            return
+            return []
         }// keyword_encode
         
         // リクエストURLの組み立て(半角英数字に変換したものを\(keyword_encode)に代入)
         guard let req_url = URL(string: "https://sysbird.jp/toriko/api/?apikey=guest&format=json&keyword=\(keyword_encode)&max=10&order=r") else {
             // アンラップに失敗したら
-            return
+            return []
         }// req_url
         print(req_url)
         
         do {
             // リクエストURLからダウンロード
+            // await 待機状態（acyncと一対）
             let (data , _) = try await URLSession.shared.data(from: req_url)
             
             // JSONDecoderのインスタンス取得
             let decoder = JSONDecoder()
-            // 受け取ったJSONデータをパース（解析）して格納
+            // デコード、受け取ったJSONデータをパース（解析）して格納
             let json = try decoder.decode(ResultJson.self, from: data)
             
             // print(json)
             
             // お菓子の情報が取得できているか確認
-            guard let items = json.item else { return }
+            // items:[OkashiModel.ResultJson.Item]
+            guard let items = json.item else {
+                return []
+            }
             // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
+            // エィシンク非同期
             DispatchQueue.main.async {
-
                 // 取得しているお菓子の数だけ処理
                 for item in items {
                     // お菓子の名称、掲載URL、画像URLをアンラップ
                     if let name = item.name,
                        let link = item.url,
                        let image = item.image {
-                        // 1つのお菓子を構造体でまとめて管理
+                        // 1つのお菓子を構造体OkashiItemでまとめて管理
                         let okashi = OkashiItem(name: name, link: link, image: image)
                     }// if let
                 }// for item in items
@@ -79,7 +83,8 @@ class OkashiModel {
             // エラー処理
             print("エラーが出ました")
         }// catch
-    }// SearchOkashi
+        return okashiList
+    }// searchOkashi
 }// OkashiModel
 
 
