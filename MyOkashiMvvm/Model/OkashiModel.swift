@@ -76,6 +76,7 @@ class OkashiModel {
                        let image = item.image {
                         // 1つのお菓子を構造体OkashiItemでまとめて管理
                         let okashi = OkashiItem(name: name, link: link, image: image)
+                        okashiList.append(okashi)
                     }// if let
                 }// for item in items
             }// DispatchQueue
