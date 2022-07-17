@@ -26,7 +26,7 @@ struct OkashiView: View {
                     // Taskは非同期で処理を実行できる
                     Task {
                         // 入力完了直後に検索をする
-                        await okashiDataList.searchOkashi(keyword: inputText)
+                        await okashiDataList.okashiData(keyword: inputText)
                         
                     }
                 }
