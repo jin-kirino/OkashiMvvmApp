@@ -65,21 +65,17 @@ class OkashiModel {
             guard let items = json.item else {
                 return []
             }
-            // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
-            // エィシンク非同期
-            DispatchQueue.main.async {
-                // 取得しているお菓子の数だけ処理
-                for item in items {
-                    // お菓子の名称、掲載URL、画像URLをアンラップ
-                    if let name = item.name,
-                       let link = item.url,
-                       let image = item.image {
-                        // 1つのお菓子を構造体OkashiItemでまとめて管理
-                        let okashi = OkashiItem(name: name, link: link, image: image)
-                        okashiList.append(okashi)
-                    }// if let
-                }// for item in items
-            }// DispatchQueue
+            // 取得しているお菓子の数だけ処理
+            for item in items {
+                // お菓子の名称、掲載URL、画像URLをアンラップ
+                if let name = item.name,
+                   let link = item.url,
+                   let image = item.image {
+                    // 1つのお菓子を構造体OkashiItemでまとめて管理
+                    let okashi = OkashiItem(name: name, link: link, image: image)
+                    okashiList.append(okashi)
+                }// if let
+            }// for item in items
         } catch {
             // エラー処理
             print("エラーが出ました")
