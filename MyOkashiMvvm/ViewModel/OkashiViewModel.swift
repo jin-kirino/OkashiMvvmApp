@@ -23,7 +23,6 @@ class OkashiData: ObservableObject {
     // searchOkashiを非同期で実行したい
     // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
     @MainActor func okashiData(keyword: String) {
-
         // Taskは同期関数の中で非同期で処理を実行できる
         Task {
             // serchOkashiメソッドを呼び出し
