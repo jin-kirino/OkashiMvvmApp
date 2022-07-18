@@ -23,15 +23,17 @@ class OkashiData: ObservableObject {
     func okashiData(keyword: String) async {
         // OkashiModelをインスタンス化
         let okashiModel = OkashiModel()
+        // serchOkashiメソッドを呼び出し
+        let okashiData = await okashiModel.searchOkashi(keyword: keyword)
         // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
         DispatchQueue.main.async {
             // okashiLostのデータを初期化（前回検索データが保持されているため.removwAll())
             self.okashiList.removeAll()
             print("remove:\(self.okashiList)")
-            
+            // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
+            self.okashiList = okashiData
         }// DispatchQueue
-        // serchOkashiメソッドを呼び出し
-        self.okashiList = await okashiModel.searchOkashi(keyword: keyword)
+
         print("append:\(self.okashiList)")
     }// seachOkashi
 }// OkashiData
@@ -43,3 +45,5 @@ class OkashiData: ObservableObject {
 // 未入力チェック
 // Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.
 // バックグラウンドスレッドからの変更の発行は許可されていません。モデルの更新時には、必ずメインスレッドから(receive(on:) のような演算子を使って) 値を発行するようにしてください。
+// Cannot pass function of type '@Sendable () async -> Void' to parameter expecting synchronous function type
+// 同期関数型を期待するパラメータに '@Sendable () async -> Void' 型の関数を渡すことができない
