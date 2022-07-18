@@ -22,13 +22,10 @@ struct OkashiView: View {
             // 文字を受け取るTextFieldを表示する
             TextField("キーワード", text: $inputText
                       , prompt: Text("キーワードを入力してください"))
-                .onSubmit {
-                    // Taskは非同期で処理を実行できる
-                    Task {
-                        // 入力完了直後に検索をする
-                        await okashiDataList.okashiData(keyword: inputText)
-                    }// Task
-                }// .onSubmit
+                // 入力完了直後に検索をする
+            .onSubmit {
+                okashiDataList.okashiData(keyword: inputText)
+            }
                 // キーボードの改行を検索に変更する
                 .submitLabel(.search)
                 // 上下左右に空白を空ける
