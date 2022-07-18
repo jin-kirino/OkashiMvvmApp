@@ -43,4 +43,4 @@ class OkashiData: ObservableObject {
 // 半角・全角チェック
 // 未入力チェック
 // Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.
-// バックグラウンドスレッドからの変更の発行は許可されていません。モデルの更新時には、必ずメインスレッドから (receive(on:) のような演算子を使って) 値を発行するようにしてください。
+// バックグラウンドスレッドからの変更の発行は許可されていません。モデルの更新時には、必ずメインスレッドから (st) のような演算子を使って) 値を発行するようにしてください。
