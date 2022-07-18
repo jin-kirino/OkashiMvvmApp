@@ -27,24 +27,20 @@ struct OkashiView: View {
                     Task {
                         // 入力完了直後に検索をする
                         await okashiDataList.okashiData(keyword: inputText)
-                        
-                    }
-                }
+                    }// Task
+                }// .onSubmit
                 // キーボードの改行を検索に変更する
                 .submitLabel(.search)
                 // 上下左右に空白を空ける
                 .padding()
             
-            // リスト表示する
+            // リスト表示する、1つ1つの要素を取り出す
             List(okashiDataList.okashiList) { okashi in
-                // 1つ1つの要素を取り出す
-                
                 // ボタンを用意する
                 Button(action: {
                     // SafariViewを表示する
                     showSafari.toggle()
                 }) {
-                    
                     // Listの表示内容を生成する
                     // 水平にレイアウト（横方向にレイアウト）
                     HStack {
@@ -58,7 +54,6 @@ struct OkashiView: View {
                                 .aspectRatio(contentMode: .fit)
                                 // 高さ40
                                 .frame(height: 40)
-                            
                         } placeholder: {
                             // 読み込み中はインジケーターを表示する
                             ProgressView()
@@ -66,7 +61,6 @@ struct OkashiView: View {
                         // テキスト表示する
                         Text(okashi.name)
                     } // HStackここまで
-                    
                 } // Buttonここまで
                 .sheet(isPresented: $showSafari, content: {
                     // SafariViewを表示する
@@ -75,7 +69,6 @@ struct OkashiView: View {
                         .edgesIgnoringSafeArea(.bottom)
                 }) // sheetここまで
             } // Listここまで
-            
         } // VStackここまで
     } // bodyここまで
 } // ContentViewここまで

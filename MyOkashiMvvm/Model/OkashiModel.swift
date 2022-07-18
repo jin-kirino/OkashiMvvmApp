@@ -52,16 +52,11 @@ class OkashiModel {
             // リクエストURLからダウンロード
             // await 待機状態（acyncと一対）
             let (data , _) = try await URLSession.shared.data(from: req_url)
-            
             // JSONDecoderのインスタンス取得
             let decoder = JSONDecoder()
             // デコード、受け取ったJSONデータをパース（解析）して格納
             let json = try decoder.decode(ResultJson.self, from: data)
-            
-            // print(json)
-            
-            // お菓子の情報が取得できているか確認
-            // items:[OkashiModel.ResultJson.Item]
+            // お菓子の情報が取得できているか確認,items:[OkashiModel.ResultJson.Item]
             guard let items = json.item else {
                 return okashiList
             }
