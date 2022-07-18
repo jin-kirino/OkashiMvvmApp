@@ -33,7 +33,6 @@ class OkashiData: ObservableObject {
             // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
             self.okashiList = okashiData
         }// DispatchQueue
-
         print("append:\(self.okashiList)")
     }// seachOkashi
 }// OkashiData
