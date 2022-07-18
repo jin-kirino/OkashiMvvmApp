@@ -38,13 +38,13 @@ class OkashiModel {
         guard let keyword_encode = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         else {
             // アンラップに失敗したら
-            return []
+            return okashiList
         }// keyword_encode
         
         // リクエストURLの組み立て(半角英数字に変換したものを\(keyword_encode)に代入)
         guard let req_url = URL(string: "https://sysbird.jp/toriko/api/?apikey=guest&format=json&keyword=\(keyword_encode)&max=10&order=r") else {
             // アンラップに失敗したら
-            return []
+            return okashiList
         }// req_url
         print(req_url)
         
@@ -63,7 +63,7 @@ class OkashiModel {
             // お菓子の情報が取得できているか確認
             // items:[OkashiModel.ResultJson.Item]
             guard let items = json.item else {
-                return []
+                return okashiList
             }
             // 取得しているお菓子の数だけ処理
             for item in items {
