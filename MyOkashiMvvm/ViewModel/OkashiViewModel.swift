@@ -14,23 +14,22 @@ import UIKit
 // ObservableObjectはclassのみ使用可能
 // パブリッシャー
 class OkashiData: ObservableObject {
-
+    
     // プロパティserchOkashiを監視してOkashiData（ObservableObject）へ自動通知
     @Published var okashiList: [OkashiItem] = []
     
     // Web API検索用メソッド　第一引数：検索したいキーワード(inputText)
     // asyncでsearchOkashiを非同期で実行したい
-    func okashiData(keyword: String) async {
+    // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
+    @MainActor func okashiData(keyword: String) async {
         // OkashiModelをインスタンス化
         let okashiModel = OkashiModel()
         // serchOkashiメソッドを呼び出し
         let okashiData = await okashiModel.searchOkashi(keyword: keyword)
-        // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
-        DispatchQueue.main.async {
-            // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
-            self.okashiList = okashiData
-            print("append:\(self.okashiList)")
-        }// DispatchQueue
+        
+        // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
+        self.okashiList = okashiData
+        print("append:\(self.okashiList)")
     }// seachOkashi
 }// OkashiData
 
