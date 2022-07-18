@@ -13,7 +13,6 @@
 		FF47516528791EE7000C1A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF47516428791EE7000C1A08 /* Preview Assets.xcassets */; };
 		FF47516F2879253A000C1A08 /* OkashiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47516E2879253A000C1A08 /* OkashiItem.swift */; };
 		FF47517128792554000C1A08 /* OkashiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47517028792554000C1A08 /* OkashiViewModel.swift */; };
-		FF47517328792560000C1A08 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47517228792560000C1A08 /* View.swift */; };
 		FF475175287AC8AF000C1A08 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF475174287AC8AF000C1A08 /* SafariView.swift */; };
 		FF4751B8288199A9000C1A08 /* OkashiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751B7288199A9000C1A08 /* OkashiModel.swift */; };
 /* End PBXBuildFile section */
@@ -26,7 +25,6 @@
 		FF47516428791EE7000C1A08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF47516E2879253A000C1A08 /* OkashiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkashiItem.swift; sourceTree = "<group>"; };
 		FF47517028792554000C1A08 /* OkashiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkashiViewModel.swift; sourceTree = "<group>"; };
-		FF47517228792560000C1A08 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		FF475174287AC8AF000C1A08 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		FF4751B6287DA26C000C1A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF4751B7288199A9000C1A08 /* OkashiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkashiModel.swift; sourceTree = "<group>"; };
@@ -67,8 +65,6 @@
 				FF47516C28791EF7000C1A08 /* ViewModel */,
 				FF47516B28791EEF000C1A08 /* View */,
 				FF47515D28791EE4000C1A08 /* MyOkashiMvvmApp.swift */,
-				FF47515F28791EE4000C1A08 /* OkashiView.swift */,
-				FF475174287AC8AF000C1A08 /* SafariView.swift */,
 				FF47516128791EE7000C1A08 /* Assets.xcassets */,
 				FF47516328791EE7000C1A08 /* Preview Content */,
 			);
@@ -86,7 +82,8 @@
 		FF47516B28791EEF000C1A08 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FF47517228792560000C1A08 /* View.swift */,
+				FF47515F28791EE4000C1A08 /* OkashiView.swift */,
+				FF475174287AC8AF000C1A08 /* SafariView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +177,6 @@
 			files = (
 				FF47516F2879253A000C1A08 /* OkashiItem.swift in Sources */,
 				FF47516028791EE4000C1A08 /* OkashiView.swift in Sources */,
-				FF47517328792560000C1A08 /* View.swift in Sources */,
 				FF47517128792554000C1A08 /* OkashiViewModel.swift in Sources */,
 				FF475175287AC8AF000C1A08 /* SafariView.swift in Sources */,
 				FF4751B8288199A9000C1A08 /* OkashiModel.swift in Sources */,

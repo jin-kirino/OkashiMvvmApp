@@ -27,13 +27,10 @@ class OkashiData: ObservableObject {
         let okashiData = await okashiModel.searchOkashi(keyword: keyword)
         // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
         DispatchQueue.main.async {
-            // okashiLostのデータを初期化（前回検索データが保持されているため.removwAll())
-            self.okashiList.removeAll()
-            print("remove:\(self.okashiList)")
             // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
             self.okashiList = okashiData
+            print("append:\(self.okashiList)")
         }// DispatchQueue
-        print("append:\(self.okashiList)")
     }// seachOkashi
 }// OkashiData
 
