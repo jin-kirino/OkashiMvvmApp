@@ -17,20 +17,20 @@ class OkashiData: ObservableObject {
     
     // プロパティserchOkashiを監視してOkashiData（ObservableObject）へ自動通知
     @Published var okashiList: [OkashiItem] = []
-    
+    // OkashiModelをインスタンス化
+    let okashiModel = OkashiModel()
     // Web API検索用メソッド　第一引数：検索したいキーワード(inputText)
     // searchOkashiを非同期で実行したい
     // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
     @MainActor func okashiData(keyword: String) {
-        // OkashiModelをインスタンス化
-        let okashiModel = OkashiModel()
+
         // Taskは同期関数の中で非同期で処理を実行できる
         Task {
-        // serchOkashiメソッドを呼び出し
-        let okashiData = await okashiModel.searchOkashi(keyword: keyword)
-        // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
-        self.okashiList = okashiData
-        print("append:\(self.okashiList)")
+            // serchOkashiメソッドを呼び出し
+            let okashiData = await okashiModel.searchOkashi(keyword: keyword)
+            // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
+            self.okashiList = okashiData
+            print("append:\(self.okashiList)")
         }// Task
     }// seachOkashi
 }// OkashiData
