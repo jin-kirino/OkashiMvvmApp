@@ -29,7 +29,7 @@ class OkashiData: ObservableObject {
             let okashiData = await okashiModel.searchOkashi(keyword: keyword)
             // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
             okashiList = okashiData
-            print("append:\(self.okashiList)")
+            print("append:\(okashiList)")
         }// Task
     }// seachOkashi
 }// OkashiData
