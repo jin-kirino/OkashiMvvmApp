@@ -28,7 +28,7 @@ class OkashiData: ObservableObject {
             // serchOkashiメソッドを呼び出し
             let okashiData = await okashiModel.searchOkashi(keyword: keyword)
             // okashiListにokashiModel.searchOkashi(keyword: keyword)を追加
-            self.okashiList = okashiData
+            okashiList = okashiData
             print("append:\(self.okashiList)")
         }// Task
     }// seachOkashi
