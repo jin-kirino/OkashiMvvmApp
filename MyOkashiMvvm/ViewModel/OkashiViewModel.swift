@@ -18,7 +18,7 @@ class OkashiData: ObservableObject {
     // プロパティserchOkashiを監視してOkashiData（ObservableObject）へ自動通知
     @Published var okashiList: [OkashiItem] = []
     // OkashiModelをインスタンス化
-    let okashiModel = OkashiModel()
+    private let okashiModel = OkashiModel()
     // Web API検索用メソッド　第一引数：検索したいキーワード(inputText)
     // searchOkashiを非同期で実行したい
     // @Publishedの変数を更新するときはメインスレッドで更新する必要がある
