@@ -25,7 +25,7 @@ class OkashiModel {
         // 複数要素、上の３つの情報を配列に格納する
         let item: [Item]?
     }// ResultJSON
-    
+
     // webAPI検索用のメソッド　引数：検索したいキーワード(inputText)
     // async(エィシンク)でsearchOkashiを非同期で実行したい
     // Web API検索用メソッド　第一引数：keyword 検索したいワード
@@ -33,25 +33,25 @@ class OkashiModel {
         var okashiList: [OkashiItem] = []
         // デバッグエリアに出力
         print(keyword)
-        
+
         // お菓子の検索キーワードをURLエンコードする→半角英数字に変換
-        guard let keyword_encode = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let keywordEncode = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         else {
             // アンラップに失敗したら
             return okashiList
         }// keyword_encode
-        
+
         // リクエストURLの組み立て(半角英数字に変換したものを\(keyword_encode)に代入)
-        guard let req_url = URL(string: "https://sysbird.jp/toriko/api/?apikey=guest&format=json&keyword=\(keyword_encode)&max=10&order=r") else {
+        guard let reqUrl = URL(string: "https://sysbird.jp/toriko/api/?apikey=guest&format=json&keyword=\(keywordEncode)&max=10&order=r") else {
             // アンラップに失敗したら
             return okashiList
         }// req_url
-        print(req_url)
-        
+        print(reqUrl)
+
         do {
             // リクエストURLからダウンロード
             // await 待機状態（acyncと一対）
-            let (data , _) = try await URLSession.shared.data(from: req_url)
+            let (data, _) = try await URLSession.shared.data(from: reqUrl)
             // JSONDecoderのインスタンス取得
             let decoder = JSONDecoder()
             // デコード、受け取ったJSONデータをパース（解析）して格納
@@ -78,7 +78,6 @@ class OkashiModel {
         return okashiList
     }// searchOkashi
 }// OkashiModel
-
 
 // 1 ViewとModelは直接受け渡しできないルール→エンコードしてリクエストしてデコードするsearchOkashiメソッドの引数はどうすれば良いのか？
 // ViewからViewModel、ViewModelからModel

@@ -14,7 +14,7 @@ import UIKit
 // ObservableObjectはclassのみ使用可能
 // パブリッシャー
 class OkashiData: ObservableObject {
-    
+
     // プロパティserchOkashiを監視してOkashiData（ObservableObject）へ自動通知
     @Published var okashiList: [OkashiItem] = []
     // OkashiModelをインスタンス化
@@ -33,7 +33,6 @@ class OkashiData: ObservableObject {
         }// Task
     }// seachOkashi
 }// OkashiData
-
 
 // メールアドレス妥当性チェック
 // 半角・全角チェック

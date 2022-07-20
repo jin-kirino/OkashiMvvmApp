@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-//構造体OkashiItemを配列としてまとめる
+// 構造体OkashiItemを配列としてまとめる
 // お菓子のリスト（Identifiableプロトコル）
 struct OkashiItem: Identifiable {
     // 一意でなきゃだめ

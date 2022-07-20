@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct OkashiView: View {
-    
+
     // OkashiDataを参照する状態変数
     @StateObject var okashiDataList = OkashiData()
     // 入力された文字列を保持する状態変数
     @State var inputText = ""
     // SafariViewの表示有無を管理する変数
     @State var showSafari = false
-    
+
     var body: some View {
         // 垂直にレイアウト（縦方向にレイアウト）
         VStack {
             // 文字を受け取るTextFieldを表示する
-            TextField("キーワード", text: $inputText
-                      , prompt: Text("キーワードを入力してください"))
+            TextField("キーワード", text: $inputText, prompt: Text("キーワードを入力してください"))
                 // 入力完了直後に検索をする
             .onSubmit {
                 okashiDataList.okashiData(keyword: inputText)
@@ -30,7 +29,7 @@ struct OkashiView: View {
                 .submitLabel(.search)
                 // 上下左右に空白を空ける
                 .padding()
-            
+
             // リスト表示する、1つ1つの要素を取り出す
             List(okashiDataList.okashiList) { okashi in
                 // ボタンを用意する
