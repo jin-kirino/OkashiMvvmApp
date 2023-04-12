@@ -1,2 +1,2 @@
 # MyOkashiMvvm_kirino
-お菓子アプリをMVVMで組み直し
+webAPIを利用してお菓子を検索するアプリ
